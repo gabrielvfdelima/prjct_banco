@@ -76,6 +76,7 @@ def sacar_dinheiro():
         fora_da_delimitacao = saque > 0 and saque < 500
         
         if excedeu_limite:
+
             #Avisos para o usuário
             print(Fore.RED + "Você pode sacar no máximo 500 reais por saque!")
             print(f"Você só tem 3 saques diários! Quantia de saques atual: {numero_saques}" + Fore.RESET)
