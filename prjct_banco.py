@@ -69,7 +69,15 @@ def sacar_dinheiro():
     #Bloco try para verificar se o usuário digitou um tipo de dado válido
     try:
         #Verifica se atingiu o número de saques diários
-        if numero_saques < 3:
+        excedeu_limite = numero_saques == LIMITE_SAQUE
+        #Verifica se o valor do saque é menor que o saldo em conta
+        sem_saldo_suficiente = saque < saldo_em_conta
+        #Verifica a delimitação dos valor para o saque
+        fora_da_delimitacao = saque > 0 and saque < 500
+        
+        if excedeu_limite:
+            
+
             
             #Avisos para o usuário
             print(Fore.RED + "Você pode sacar no máximo 500 reais por saque!")
@@ -78,11 +86,9 @@ def sacar_dinheiro():
             #Input na variável saque
             saque = float(input("Digite quanto dinheiro você quer sacar: ")) 
             
-            #Verifica se o valor do saque é menor que o saldo em conta
-            if saque < saldo_em_conta:
+            if sem_saldo_suficiente:
                 
-                #Verifica a delimitação dos valor para o saque
-                if saque > 0 and saque < 500:
+                if fora_da_delimitacao:
                     dinheiro_sacado.append(saque)
                     saldo_em_conta -= saque
                     numero_saques+=1
